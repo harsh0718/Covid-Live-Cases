@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covide-App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body ng-app="Myapp" ng-controller="Mycontroller">
+    <div class="container">
+        <div class="jumbotron p-4">
+            <img src="{{imgs}}" alt="" class="mx-auto d-block">
+            <h1 class="text-center pb-4">{{title}} <button class="btn btn-info text-white" ng-click="change()"> Our Moto </button></h1>
+            
+            <p>
+                Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus.
+                Most people infected with the COVID-19 virus will experience mild to moderate respiratory illness and recover without requiring special treatment.  Older people, and those with underlying medical problems like cardiovascular disease, diabetes, chronic respiratory disease, and cancer are more likely to develop serious illness.
+                The best way to prevent and slow down transmission is to be well informed about the COVID-19 virus, the disease it causes and how it spreads. Protect yourself and others from infection by washing your hands or using an alcohol based rub frequently and not touching your face. 
+    
+            </p>
+
+
+            <!-- ALL Data Of Cases -->
+            <h1 class="text-center pb-4">World Wide Corona Cases</h1>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <div class="card bg-warning text-white">
+                        <div class="card-body">
+                            <h3>Confirmed Cases <img src="img/virus.png"> </h3>
+                            <h3> {{all_data.confirmed.value}} </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card bg-success text-white">
+                        <div class="card-body">
+                            <h3>Recovered Cases <img src="img/recovered.png" alt="" > </h3>
+                            <h3> {{all_data.recovered.value}} </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card bg-danger text-white">
+                        <div class="card-body">
+                            <h3>deaths Cases <img src="img/death.png" alt=""> </h3>
+                            <h3> {{all_data.deaths.value}} </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- End Of ALL Data Of Cases -->
+
+            <!-- Country cases -->
+            <h1 class="text-center pb-4 pt-5">Individual Country Corona Cases</h1>
+            <div class="form-group col-md-4">
+                <label for="">Choose Country : </label>
+                <select name="country" id="" class=" form-control" ng-model="country" ng-change="country_name()">
+                    <option value="" selected disabled>Select Country</option>
+                    <option value="India">India</option>
+                    <option value="Pakistan">Pakistan</option>
+                    <option value="China">China</option>
+                    <option value="Bangladesh">Bangladesh</option>
+                    <option value="Sri Lanka">Srilanka</option>
+                    <option value="Nepal">Nepal</option>
+                    <option value="Bhutan">Bhutan</option>
+                </select>
+
+            </div>
+            
+            <h1 class="text-center pb-4">{{country }}</h1>
+            <div class="row text-center" ng-if="country_data">
+                <div class="col-md-4">
+                    <div class="card bg-warning text-white">
+                        <div class="card-body">
+                            <h3>Confirmed Cases <img src="img/virus.png"> </h3>
+                            <h3> {{country_data.confirmed.value}} </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card bg-success text-white">
+                        <div class="card-body">
+                            <h3>Recovered Cases <img src="img/recovered.png" alt="" > </h3>
+                            <h3> {{country_data.recovered.value}} </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card bg-danger text-white">
+                        <div class="card-body">
+                            <h3>deaths Cases <img src="img/death.png" alt=""> </h3>
+                            <h3> {{country_data.deaths.value}} </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- End Of Country cases -->
+
+        </div>
+    </div>
+</body>
+</html>
